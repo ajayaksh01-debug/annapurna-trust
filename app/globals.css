@@ -1,0 +1,420 @@
+@import "tailwindcss";
+
+@theme {
+  /* Seva Green palette */
+  --color-seva-green: #1B5E3B;
+  --color-seva-green-dark: #0F3D25;
+  --color-seva-green-light: #2D7A52;
+  --color-seva-green-50: #E8F5EE;
+  --color-seva-green-100: #C5E6D3;
+  --color-seva-green-200: #9DD1B4;
+
+  /* Saffron palette */
+  --color-saffron: #E07B2A;
+  --color-saffron-dark: #B85E18;
+  --color-saffron-light: #F09B4A;
+  --color-saffron-50: #FEF3E8;
+  --color-saffron-100: #FDE0C0;
+
+  /* Gold */
+  --color-gold: #C9962A;
+  --color-gold-light: #E5B84C;
+  --color-gold-dark: #A57818;
+
+  /* Neutrals */
+  --color-cream: #FDF6E3;
+  --color-off-white: #FAF7F0;
+  --color-warm-gray: #F5F0E8;
+  --color-text-dark: #1A1A1A;
+  --color-text-medium: #3D3D3D;
+  --color-text-muted: #6B6B6B;
+  --color-border: #E5E0D8;
+
+  /* Fonts */
+  --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #FAF7F0;
+  color: #1A1A1A;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #FAF7F0; }
+::-webkit-scrollbar-thumb { background: #2D7A52; border-radius: 3px; }
+
+/* ─── Typography helpers ─── */
+.heading-display {
+  font-size: clamp(2.125rem, 5vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #0F3D25;
+}
+
+.heading-section {
+  font-size: clamp(1.625rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: #0F3D25;
+}
+
+.heading-card {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #0F3D25;
+}
+
+.text-body { font-size: 1rem; line-height: 1.8; color: #3D3D3D; }
+.text-muted { font-size: 0.9375rem; color: #6B6B6B; line-height: 1.65; }
+
+/* ─── Section label ─── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #E07B2A;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.625rem;
+}
+
+/* ─── Gold divider ─── */
+.gold-line {
+  width: 3.5rem;
+  height: 3px;
+  background: linear-gradient(90deg, #C9962A, #E5B84C);
+  border-radius: 2px;
+  margin: 0.75rem auto 1.5rem;
+}
+.gold-line-left { margin: 0.75rem 0 1.5rem; }
+
+/* ─── Buttons ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #E07B2A;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.8125rem 1.875rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background: #B85E18;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(224, 123, 42, 0.35);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #1B5E3B;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.875rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 2px solid #1B5E3B;
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+}
+.btn-secondary:hover { background: #1B5E3B; color: white; transform: translateY(-1px); }
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: white;
+  color: #1B5E3B;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 2px solid white;
+  cursor: pointer;
+  line-height: 1;
+}
+.btn-white:hover { background: #FDF6E3; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.8125rem 2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 2px solid rgba(255,255,255,0.75);
+  cursor: pointer;
+  line-height: 1;
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.15); border-color: white; }
+
+/* ─── Cards ─── */
+.card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(27, 94, 59, 0.07);
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.card:hover {
+  box-shadow: 0 10px 40px rgba(27, 94, 59, 0.13);
+  transform: translateY(-3px);
+}
+
+/* ─── Tag pills ─── */
+.tag {
+  display: inline-block;
+  background: #E8F5EE;
+  color: #1B5E3B;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.tag-saffron { background: #FEF3E8; color: #B85E18; }
+.tag-gold { background: #FBF4E0; color: #A57818; }
+
+/* ─── Stat numbers ─── */
+.stat-number {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 900;
+  color: #1B5E3B;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Quote ─── */
+.quote-block {
+  border-left: 4px solid #E07B2A;
+  padding-left: 1.25rem;
+  font-style: italic;
+  font-size: 1.0625rem;
+  color: #3D3D3D;
+  line-height: 1.8;
+}
+
+/* ─── Form ─── */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #E5E0D8;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  background: white;
+  color: #1A1A1A;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+.form-input:focus {
+  border-color: #1B5E3B;
+  box-shadow: 0 0 0 3px rgba(27, 94, 59, 0.1);
+}
+.form-input::placeholder { color: #A0A0A0; }
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2D2D2D;
+  margin-bottom: 0.375rem;
+}
+
+/* ─── Trust badge ─── */
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  background: #E8F5EE;
+  border: 1px solid #9DD1B4;
+  border-radius: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #0F3D25;
+}
+
+/* ─── WhatsApp float ─── */
+.wa-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5); }
+
+/* ─── Image placeholder ─── */
+.img-placeholder {
+  width: 100%;
+  background: linear-gradient(135deg, #C5E6D3 0%, #9DD1B4 60%, #E5B84C 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(15, 61, 37, 0.6);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+/* ─── Section backgrounds ─── */
+.bg-seva { background-color: #FAF7F0; }
+.bg-green-section {
+  background: linear-gradient(135deg, #0F3D25 0%, #1B5E3B 60%, #2D7A52 100%);
+}
+.bg-saffron-section {
+  background: linear-gradient(135deg, #B85E18 0%, #E07B2A 100%);
+}
+.bg-cream-section { background-color: #FDF6E3; }
+
+/* ─── Divider ─── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #E5E0D8, transparent);
+}
+
+/* ─── Program icon circles ─── */
+.program-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+/* ─── Donation amount cards ─── */
+.donation-card {
+  border: 2px solid #E5E0D8;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  background: white;
+}
+.donation-card:hover { border-color: #1B5E3B; background: #E8F5EE; }
+.donation-card.selected { border-color: #1B5E3B; background: #E8F5EE; }
+.donation-amount { font-size: 1.5rem; font-weight: 800; color: #1B5E3B; }
+.donation-impact { font-size: 0.8125rem; color: #5A5A5A; margin-top: 0.25rem; }
+
+/* ─── Timeline ─── */
+.timeline-dot {
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 50%;
+  background: #E07B2A;
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+  box-shadow: 0 0 0 3px rgba(224, 123, 42, 0.2);
+}
+
+/* ─── Responsive nav ─── */
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #2D2D2D;
+  text-decoration: none;
+  padding: 0.375rem 0;
+  transition: color 0.15s;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #E07B2A;
+  transition: width 0.2s;
+}
+.nav-link:hover { color: #1B5E3B; }
+.nav-link:hover::after { width: 100%; }
+
+/* ─── Hero overlay ─── */
+.hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 61, 37, 0.94) 0%,
+    rgba(27, 94, 59, 0.85) 50%,
+    rgba(184, 94, 24, 0.7) 100%
+  );
+}
+
+/* ─── Announcement bar ─── */
+.announcement-bar {
+  background: linear-gradient(90deg, #0F3D25, #1B5E3B, #0F3D25);
+  color: #E5B84C;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+}
+
+/* ─── Scroll animations (subtle) ─── */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+}
+
